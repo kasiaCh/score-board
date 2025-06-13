@@ -15,12 +15,14 @@ public class Main {
         scoreBoardService.startGame("Germany", "France");
         scoreBoardService.startGame("Uruguay", "Italy");
         scoreBoardService.startGame("Argentina", "Australia");
+        scoreBoardService.startGame("Norway", "Turkey");
 
         scoreBoardService.updateScore("Mexico", "Canada", 0, 5);
         scoreBoardService.updateScore("Spain", "Brazil", 10, 2);
         scoreBoardService.updateScore("Germany", "France", 2, 2);
         scoreBoardService.updateScore("Uruguay", "Italy", 6, 6);
         scoreBoardService.updateScore("Argentina", "Australia", 3, 1);
+        scoreBoardService.finishGame("Norway", "Turkey");
 
         presenter.printSummary();
     }

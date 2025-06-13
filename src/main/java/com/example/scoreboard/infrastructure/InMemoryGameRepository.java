@@ -12,7 +12,7 @@ public class InMemoryGameRepository implements GameRepository {
     private final Map<String, Game> games;
 
     public InMemoryGameRepository() {
-        this.games = new LinkedHashMap<>();
+        this.games = new LinkedHashMap<>(); // LinkedHashMap for optimal performance while removing elements and to ensure the order of insertion
     }
 
     @Override
