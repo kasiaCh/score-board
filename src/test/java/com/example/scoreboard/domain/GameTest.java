@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.example.scoreboard.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

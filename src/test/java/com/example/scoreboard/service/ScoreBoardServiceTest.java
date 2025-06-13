@@ -1,6 +1,6 @@
-package com.example.service;
+package com.example.scoreboard.service;
 
-import com.example.domain.Game;
+import com.example.scoreboard.domain.Game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

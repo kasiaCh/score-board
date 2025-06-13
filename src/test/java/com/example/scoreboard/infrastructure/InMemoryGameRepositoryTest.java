@@ -1,6 +1,6 @@
-package com.example.infrastructure;
+package com.example.scoreboard.infrastructure;
 
-import com.example.domain.Game;
+import com.example.scoreboard.domain.Game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

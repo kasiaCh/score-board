@@ -1,8 +1,8 @@
-package com.example.service;
+package com.example.scoreboard.service;
 
-import com.example.domain.Game;
-import com.example.domain.GameRepository;
-import com.example.infrastructure.InMemoryGameRepository;
+import com.example.scoreboard.domain.Game;
+import com.example.scoreboard.domain.GameRepository;
+import com.example.scoreboard.infrastructure.InMemoryGameRepository;
 
 import java.util.Comparator;
 import java.util.List;
