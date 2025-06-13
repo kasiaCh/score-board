@@ -73,4 +73,27 @@ class ScoreBoardServiceTest {
         assertThat(updatedSummary.getFirst().toString()).isEqualTo("Germany 3 - Mexico 2");
     }
 
+    @Test
+    void shouldGamesInSummaryBeSortedCorrectly() {
+        //given
+        var TEAM_5 = "Poland";
+        var TEAM_6 = "Hungary";
+        board.startGame(TEAM_1, TEAM_2);
+        board.startGame(TEAM_3, TEAM_4);
+        board.startGame(TEAM_5, TEAM_6);
+
+        board.updateScore(TEAM_1, TEAM_2, 4, 2);
+        board.updateScore(TEAM_3, TEAM_4, 2, 1);
+        board.updateScore(TEAM_5, TEAM_6, 6, 0);
+
+        //when
+        List<Game> games = board.getSummary();
+
+        //then
+        assertThat(games.size()).isEqualTo(3);
+        assertThat(games.get(0).toString()).isEqualTo("Poland 6 - Hungary 0");
+        assertThat(games.get(1).toString()).isEqualTo("Germany 4 - Mexico 2");
+        assertThat(games.get(2).toString()).isEqualTo("Brazil 2 - Spain 1");
+    }
+
 }

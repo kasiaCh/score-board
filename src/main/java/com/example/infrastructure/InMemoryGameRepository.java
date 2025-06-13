@@ -34,7 +34,7 @@ public class InMemoryGameRepository implements GameRepository {
     }
 
     @Override
-    public List<Game> findAll() {
+    public List<Game> findAllByAddingTimeAsc() {
         return new ArrayList<>(games.values());
     }
 

@@ -25,7 +25,7 @@ class InMemoryGameRepositoryTest {
         repository.save(new Game(TEAM_1, TEAM_2));
 
         //then
-        assertThat(repository.findAll()).hasSize(1);
+        assertThat(repository.findAllByAddingTimeAsc()).hasSize(1);
     }
 
     @Test
@@ -38,7 +38,7 @@ class InMemoryGameRepositoryTest {
         repository.delete(TEAM_1, TEAM_2);
 
         //then
-        assertThat(repository.findAll()).hasSize(0);
+        assertThat(repository.findAllByAddingTimeAsc()).hasSize(0);
     }
 
     @Test
@@ -53,8 +53,8 @@ class InMemoryGameRepositoryTest {
         repository.updateScore(TEAM_1, TEAM_2, 1, 1);
 
         //then
-        assertThat(repository.findAll()).hasSize(1);
-        assertThat(repository.findAll().getFirst()).isEqualTo(updatedGame);
+        assertThat(repository.findAllByAddingTimeAsc()).hasSize(1);
+        assertThat(repository.findAllByAddingTimeAsc().getFirst()).isEqualTo(updatedGame);
     }
 
 }

@@ -29,9 +29,10 @@ public class ScoreBoardService {
     }
 
     public List<Game> getSummary() {
-        return gameRepository.findAll().stream()
+        List<Game> games = gameRepository.findAllByAddingTimeAsc();
+        return games.stream()
                 .sorted(Comparator.comparingInt(Game::totalScore).reversed()
-                        .thenComparing(Game::homeTeam))
+                        .thenComparing(games::indexOf, Comparator.reverseOrder()))
                 .collect(Collectors.toList());
     }
 
