@@ -35,7 +35,7 @@ class InMemoryGameRepositoryTest {
         repository.save(game);
 
         //when
-        repository.delete(game);
+        repository.delete(TEAM_1, TEAM_2);
 
         //then
         assertThat(repository.findAll()).hasSize(0);

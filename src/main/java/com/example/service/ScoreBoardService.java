@@ -4,30 +4,35 @@ import com.example.domain.Game;
 import com.example.domain.GameRepository;
 import com.example.infrastructure.InMemoryGameRepository;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ScoreBoardService {
 
-    GameRepository gameRepository;
+    private final GameRepository gameRepository;
 
     public ScoreBoardService() {
-        gameRepository = new InMemoryGameRepository();
+        gameRepository = new InMemoryGameRepository(); // could be injected when using Spring
     }
 
     public void startGame(String homeTeam, String awayTeam) {
-
+        gameRepository.save(new Game(homeTeam, awayTeam));
     }
 
     public void finishGame(String homeTeam, String awayTeam) {
-
+        gameRepository.delete(homeTeam, awayTeam);
     }
 
     public void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore) {
-
+        gameRepository.updateScore(homeTeam, awayTeam, homeScore, awayScore);
     }
 
     public List<Game> getSummary() {
-        return  null;
+        return gameRepository.findAll().stream()
+                .sorted(Comparator.comparingInt(Game::totalScore).reversed()
+                        .thenComparing(Game::homeTeam))
+                .collect(Collectors.toList());
     }
 
 }

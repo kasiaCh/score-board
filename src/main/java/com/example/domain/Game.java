@@ -3,8 +3,8 @@ package com.example.domain;
 import java.util.Objects;
 
 public class Game {
-    private String homeTeam;
-    private String awayTeam;
+    private final String homeTeam;
+    private final String awayTeam;
     private int homeScore;
     private int awayScore;
 
@@ -16,11 +16,20 @@ public class Game {
     }
 
     public void updateScore(int homeScore, int awayScore) {
-
+        this.homeScore = homeScore;
+        this.awayScore = awayScore;
     }
 
     public int totalScore() {
         return homeScore + awayScore;
+    }
+
+    public String awayTeam() {
+        return awayTeam;
+    }
+
+    public String homeTeam() {
+        return homeTeam;
     }
 
     @Override
@@ -31,7 +40,8 @@ public class Game {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Game game)) return false;
-        return homeScore == game.homeScore && awayScore == game.awayScore && Objects.equals(homeTeam, game.homeTeam) && Objects.equals(awayTeam, game.awayTeam);
+        return homeScore == game.homeScore && awayScore == game.awayScore && Objects.equals(homeTeam, game.homeTeam)
+                && Objects.equals(awayTeam, game.awayTeam);
     }
 
     @Override
