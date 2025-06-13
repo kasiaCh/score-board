@@ -1,12 +1,14 @@
 package com.example.scoreboard.service;
 
 import com.example.scoreboard.domain.Game;
+import com.example.scoreboard.service.exception.InValidDataException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ScoreBoardServiceTest {
 
@@ -94,6 +96,42 @@ class ScoreBoardServiceTest {
         assertThat(games.get(0).toString()).isEqualTo("Poland 6 - Hungary 0");
         assertThat(games.get(1).toString()).isEqualTo("Germany 4 - Mexico 2");
         assertThat(games.get(2).toString()).isEqualTo("Brazil 2 - Spain 1");
+    }
+
+    @Test
+    void shouldThrowExceptionWhenStartDuplicatedGame() {
+        board.startGame(TEAM_1, TEAM_2);
+
+        assertThrows(
+                InValidDataException.class,
+                () ->  board.startGame(TEAM_1, TEAM_2));
+        }
+
+    @Test
+    void shouldThrowExceptionWhenFinishGameThatNotExist() {
+        board.startGame(TEAM_1, TEAM_2);
+
+        assertThrows(
+                InValidDataException.class,
+                () ->  board.finishGame(TEAM_3, TEAM_4));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenUpdateGameThatNotExist() {
+        board.startGame(TEAM_1, TEAM_2);
+
+        assertThrows(
+                InValidDataException.class,
+                () ->  board.updateScore(TEAM_3, TEAM_4, 2, 5));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenUpdateGameWithNegativeScore() {
+        board.startGame(TEAM_1, TEAM_2);
+
+        assertThrows(
+                InValidDataException.class,
+                () ->  board.updateScore(TEAM_1, TEAM_2, -2, 5));
     }
 
 }

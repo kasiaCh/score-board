@@ -38,6 +38,11 @@ public class InMemoryGameRepository implements GameRepository {
         return new ArrayList<>(games.values());
     }
 
+    @Override
+    public boolean exists(String homeTeam, String awayTeam) {
+        return false; //TODO impl.
+    }
+
     private String generateKey(String homeTeam, String awayTeam) {
         return homeTeam + "-" + awayTeam;
     }

@@ -8,5 +8,6 @@ public interface GameRepository {
     void delete(String homeTeam, String awayTeam);
     void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore);
     List<Game> findAllByAddingTimeAsc();
+    boolean exists(String homeTeam, String awayTeam);
 
 }
