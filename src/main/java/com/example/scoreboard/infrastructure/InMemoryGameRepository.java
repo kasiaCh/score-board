@@ -40,7 +40,7 @@ public class InMemoryGameRepository implements GameRepository {
 
     @Override
     public boolean exists(String homeTeam, String awayTeam) {
-        return false; //TODO impl.
+        return games.containsKey(generateKey(homeTeam, awayTeam));
     }
 
     private String generateKey(String homeTeam, String awayTeam) {
